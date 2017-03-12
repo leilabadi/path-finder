@@ -6,33 +6,33 @@ package fun.leilabadi.pathfinder;
  * @since 0.2
  */
 public class Location implements Cloneable<Location> {
-    public int i;
-    public int j;
+    public int row;
+    public int column;
 
-    public Location(int i, int j) {
-        this.i = i;
-        this.j = j;
+    public Location(int row, int column) {
+        this.row = row;
+        this.column = column;
     }
 
-    public Integer getI() {
-        return i;
+    public Integer getRow() {
+        return row;
     }
 
-    public Integer getJ() {
-        return j;
+    public Integer getColumn() {
+        return column;
     }
 
     public int distanceFrom(Location target) {
-        return Math.abs(i - target.i) + Math.abs(j - target.j);
+        return Math.abs(row - target.row) + Math.abs(column - target.column);
     }
 
     @Override
     public Location clone() {
-        return new Location(i, j);
+        return new Location(row, column);
     }
 
     @Override
     public String toString() {
-        return "(" + i + "," + j + ')';
+        return "(" + row + "," + column + ')';
     }
 }

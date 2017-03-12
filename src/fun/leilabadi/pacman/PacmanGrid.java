@@ -25,4 +25,16 @@ public class PacmanGrid extends GridMap<PacmanCell> {
         }
         return result;
     }
+
+    @Override
+    public String toString() {
+        final StringBuffer sb = new StringBuffer();
+        for (int row = 0; row < size.getRows(); row++) {
+            for (int column = 0; column < size.getColumns(); column++) {
+                sb.append(cells[row][column].getValue());
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
 }

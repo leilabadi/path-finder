@@ -45,36 +45,36 @@ public class PacmanSolution {
             State stateNew;
             Location location = state.getCurrentLocation();
             Location locationNew;
-            if (gridMap.getCell(location.getI() - 1, location.getJ()).getValue() != PacmanCell.WALL) {
+            if (gridMap.getCell(location.getRow() - 1, location.getColumn()).getValue() != PacmanCell.WALL) {
                 locationNew = state.getCurrentLocation().clone();
-                locationNew.i--;
+                locationNew.row--;
                 stateNew = new State(locationNew, state);
                 if (!hasVisited(stateNew)) {
                     queue.offer(stateNew);
                     visitedNodes.add(stateNew);
                 }
             }
-            if (gridMap.getCell(location.getI(), location.getJ() - 1).getValue() != PacmanCell.WALL) {
+            if (gridMap.getCell(location.getRow(), location.getColumn() - 1).getValue() != PacmanCell.WALL) {
                 locationNew = state.getCurrentLocation().clone();
-                locationNew.j--;
+                locationNew.column--;
                 stateNew = new State(locationNew, state);
                 if (!hasVisited(stateNew)) {
                     queue.offer(stateNew);
                     visitedNodes.add(stateNew);
                 }
             }
-            if (gridMap.getCell(location.getI(), location.getJ() + 1).getValue() != PacmanCell.WALL) {
+            if (gridMap.getCell(location.getRow(), location.getColumn() + 1).getValue() != PacmanCell.WALL) {
                 locationNew = state.getCurrentLocation().clone();
-                locationNew.j++;
+                locationNew.column++;
                 stateNew = new State(locationNew, state);
                 if (!hasVisited(stateNew)) {
                     queue.offer(stateNew);
                     visitedNodes.add(stateNew);
                 }
             }
-            if (gridMap.getCell(location.getI() + 1, location.getJ()).getValue() != PacmanCell.WALL) {
+            if (gridMap.getCell(location.getRow() + 1, location.getColumn()).getValue() != PacmanCell.WALL) {
                 locationNew = state.getCurrentLocation().clone();
-                locationNew.i++;
+                locationNew.row++;
                 stateNew = new State(locationNew, state);
                 if (!hasVisited(stateNew)) {
                     queue.offer(stateNew);

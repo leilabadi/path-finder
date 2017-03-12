@@ -54,8 +54,8 @@ public class State {
 
     @Override
     public int hashCode() {
-        int result = currentLocation.getI();
-        result = 31 * result + currentLocation.getJ();
+        int result = currentLocation.getRow();
+        result = 31 * result + currentLocation.getColumn();
         return result;
     }
 }

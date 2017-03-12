@@ -121,19 +121,19 @@ public class GridComponent extends JComponent {
     private void initGrid() {
         Point2D.Double point1, point2;
         GridCell cell;
-        for (int i = 0; i < gridView.getRows(); i++) {
-            for (int j = 0; j < gridView.getColumns(); j++) {
-                cell = gridView.getCell(i, j);
-                point1 = new Point2D.Double(i * cellWidth, j * cellHeight);
+        for (int row = 0; row < gridView.getRows(); row++) {
+            for (int column = 0; column < gridView.getColumns(); column++) {
+                cell = gridView.getCell(row, column);
+                point1 = new Point2D.Double(column * cellWidth, row * cellHeight);
                 point2 = new Point2D.Double(point1.getX() + cellWidth, point1.getY() + cellHeight);
                 cell.setLocation(point1);
                 cell.setOriginalPaint(new GradientPaint(point1, new Color(200, 200, 200), point2, new Color(223, 223, 223)));
                 cell.setSelectedPaint(new Color(128, 128, 128));
 
-                if (gridMap.getCell(i, j).getValue() == PacmanCell.WALL)
+                if (gridMap.getCell(row, column).getValue() == PacmanCell.WALL)
                     cell.setSelected(true);
 
-                switch (gridMap.getCell(i, j).getValue()) {
+                switch (gridMap.getCell(row, column).getValue()) {
                     case WALL:
                         cell.setSelected(true);
                         break;
@@ -169,9 +169,9 @@ public class GridComponent extends JComponent {
         Paint paint;
         GridCell cell;
         Rectangle2D.Double rectangle;
-        for (int i = 0; i < gridView.getRows(); i++) {
-            for (int j = 0; j < gridView.getColumns(); j++) {
-                cell = gridView.getCell(i, j);
+        for (int row = 0; row < gridView.getRows(); row++) {
+            for (int column = 0; column < gridView.getColumns(); column++) {
+                cell = gridView.getCell(row, column);
                 paint = cell.getOverridePaint() != null ? cell.getOverridePaint() :
                         (cell.isSelected() ? cell.getSelectedPaint() : cell.getOriginalPaint());
                 graphics.setPaint(paint);
@@ -209,14 +209,14 @@ public class GridComponent extends JComponent {
     public void update(PacmanSolution solution) {
         GridCell cell;
         for (State state : solution.getVisitedNodes()) {
-            cell = gridView.getCell(state.getCurrentLocation().getI(), state.getCurrentLocation().getJ());
+            cell = gridView.getCell(state.getCurrentLocation().getRow(), state.getCurrentLocation().getColumn());
             if ((state.getCurrentLocation().distanceFrom(gridMap.getStartLocation()) != 0)
                     && (state.getCurrentLocation().distanceFrom(gridMap.getGoalLocation()) != 0))
                 cell.setOverridePaint(new Color(255, 249, 111));
         }
 
         for (State state : solution.getExploredNodes()) {
-            cell = gridView.getCell(state.getCurrentLocation().getI(), state.getCurrentLocation().getJ());
+            cell = gridView.getCell(state.getCurrentLocation().getRow(), state.getCurrentLocation().getColumn());
             if ((state.getCurrentLocation().distanceFrom(gridMap.getStartLocation()) != 0)
                     && (state.getCurrentLocation().distanceFrom(gridMap.getGoalLocation()) != 0))
                 cell.setOverridePaint(new Color(255, 152, 35));
@@ -228,7 +228,7 @@ public class GridComponent extends JComponent {
     public void highlightPath(List<State> path) {
         GridCell cell;
         for (State state : path) {
-            cell = gridView.getCell(state.getCurrentLocation().getI(), state.getCurrentLocation().getJ());
+            cell = gridView.getCell(state.getCurrentLocation().getRow(), state.getCurrentLocation().getColumn());
             if ((state.getCurrentLocation().distanceFrom(gridMap.getStartLocation()) != 0)
                     && (state.getCurrentLocation().distanceFrom(gridMap.getGoalLocation()) != 0))
                 cell.setOverridePaint(new Color(0, 0, 255));

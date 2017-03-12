@@ -1,0 +1,16 @@
+# zero-based index
+# pacmanRow pacmanColumn
+# foodRow foodColumn
+# rows columns
+4 1
+4 9
+9 11
+%%%%%%%%%%%
+%---------%
+%-%%%%%-%-%
+%-------%-%
+%P%%%-%%%.%
+%---%-%---%
+%-%%%-%---%
+%---------%
+%%%%%%%%%%%

@@ -14,9 +14,9 @@ public class GridView {
         this.rows = rows;
         this.columns = columns;
         cells = new GridCell[rows][columns];
-        for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < columns; j++) {
-                cells[i][j] = new GridCell(i, j);
+        for (int row = 0; row < rows; row++) {
+            for (int column = 0; column < columns; column++) {
+                cells[row][column] = new GridCell(row, column);
             }
         }
     }
@@ -29,9 +29,9 @@ public class GridView {
         return columns;
     }
 
-    public GridCell getCell(int i, int j) {
-        if (((0 <= i) && (i < rows)) && ((0 <= j) && (j < columns)))
-            return cells[i][j];
+    public GridCell getCell(int row, int column) {
+        if (((0 <= row) && (row < rows)) && ((0 <= column) && (column < columns)))
+            return cells[row][column];
         return null;
     }
 }
